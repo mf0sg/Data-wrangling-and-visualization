@@ -19,7 +19,7 @@ The Marine Mammals Global Species Database captures the taxonomy, extinction ris
 Marine mammals are regarded as highly intelligent creatures and unfortunately face many risks that threaten their populations. Major threats to marine animals include over-fishing, bycatch, trade, climate change, invasive species, coastal development, and more. The IUCN Red List is a powerful tool to measure the different pressures threatening species and is used to guide and inform on conservation actions. The subsets of data from the IUCN Red List, such as the Marine Mammal Global Species Database, allows for a variety of analyses and potential queries. 
 
 # ER Diagram
-![image](https://github.com/mf0sg/Data-wrangling-and-visualization/assets/8819103/4d5ccb20-98da-4aa7-b60b-03fd6ae2dbfb)
+![image](https://github.com/mf0sg/Data-wrangling-and-visualization/assets/88119103/b7617773-70ef-4fb6-b15e-94cb75739e8f)
 
 # Requirements Description
 The Marine Mammals Global Species Database stores information on all 187 species of marine mammals taken from the IUCN Red List. This database contains data about every species’ taxonomic ranking and their country (or countries) of occurrence. 
@@ -33,7 +33,7 @@ The following is a list of constraints that are not captured by the ER diagram o
 •	A specie’s taxon identification number must be a positive integer.
 •	A specie’s category must be a two character combination specifically defined from the Red List species assessment. Options include EX (extinct), EW (extinct in the wild), CR (critically endangered), EN (endangered), VU (vulnerable), NT (near threatened), LC (least concern), or DD (data deficient). 
 
-Relational Schema: Syntax Summary and Table Details
+# Relational Schema: Syntax Summary and Table Details
 CountryOccurrances(taxID, countryoccurrencelookup_value)
 	foreign key (taxID) references Species(taxonID)
 Speecies(taxonID, sName, friendlyName, category)
