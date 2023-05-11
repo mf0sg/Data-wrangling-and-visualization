@@ -12,14 +12,56 @@ Two queries were then defined and executed from the database. Matplotlib was use
 from the queries. 
 
 # Introduction
-The database enterprise for Marine Mammals Global Species Database was created using data from the International Union of Conservation of Nature (IUCN) Red List of Threatened Species. The Red List is created by groups of scientists who assess species under standardized, scientific criteria for their relative risk of extinction, expressed as a Red List Category2. Assessments of the species are performed using informative data from the database including taxonomy, distribution (maps and GIS analysis), population information and status, habitat, ecology and life history, major threats, conservation measures, trade and use, and livelihoods2. It is used by governments, wildlife departments, conservation-related organizations, non-governmental organizations (NGOs), and natural resource planners1. 
+The database enterprise for Marine Mammals Global Species Database was created using data from the International Union of Conservation of Nature (IUCN) Red List of Threatened Species. The Red List is created by groups of scientists who assess species under standardized, scientific criteria for their relative risk of extinction, expressed as a Red List Category. Assessments of the species are performed using informative data from the database including taxonomy, distribution (maps and GIS analysis), population information and status, habitat, ecology and life history, major threats, conservation measures, trade and use, and livelihoods. It is used by governments, wildlife departments, conservation-related organizations, non-governmental organizations (NGOs), and natural resource planners. 
 
-The Marine Mammals Global Species Database captures the taxonomy, extinction risk, categorization, and country occurrences of each of the 187 species of marine mammals known to this planet. The taxonomy of the marine mammals in the database are identified using the hierarchy of biological organization. The taxonomy hierarchy includes kingdom, phylum, class, order, family, genus, and species. Quantitative criteria are applied to the species, and each species is assigned a Red List Category from 1-8 ranging from data deficient to extinct. In order, the risk assessment goes from data deficient > least concern > near threatened > vulnerable > endangered > critically endangered > extinct in the wild > extinct2. For a species to be considered threatened, it must be classified as either vulnerable, endangered, or critically endangered2. 
+The Marine Mammals Global Species Database captures the taxonomy, extinction risk, categorization, and country occurrences of each of the 187 species of marine mammals known to this planet. The taxonomy of the marine mammals in the database are identified using the hierarchy of biological organization. The taxonomy hierarchy includes kingdom, phylum, class, order, family, genus, and species. Quantitative criteria are applied to the species, and each species is assigned a Red List Category from 1-8 ranging from data deficient to extinct. In order, the risk assessment goes from data deficient > least concern > near threatened > vulnerable > endangered > critically endangered > extinct in the wild > extinct. For a species to be considered threatened, it must be classified as either vulnerable, endangered, or critically endangered. 
 
-Marine mammals are regarded as highly intelligent creatures and unfortunately face many risks that threaten their populations. Major threats to marine animals include over-fishing, bycatch, trade, climate change, invasive species, coastal development, and more1. The IUCN Red List is a powerful tool to measure the different pressures threatening species and is used to guide and inform on conservation actions. The subsets of data from the IUCN Red List, such as the Marine Mammal Global Species Database, allows for a variety of analyses and potential queries. 
+Marine mammals are regarded as highly intelligent creatures and unfortunately face many risks that threaten their populations. Major threats to marine animals include over-fishing, bycatch, trade, climate change, invasive species, coastal development, and more. The IUCN Red List is a powerful tool to measure the different pressures threatening species and is used to guide and inform on conservation actions. The subsets of data from the IUCN Red List, such as the Marine Mammal Global Species Database, allows for a variety of analyses and potential queries. 
 
 # ER Diagram
-![image](https://github.com/mf0sg/Data-wrangling-and-visualization/assets/88119103/4d5ccb20-98da-4aa7-b60b-03fd6ae2dbfb)
+![image](https://github.com/mf0sg/Data-wrangling-and-visualization/assets/8819103/4d5ccb20-98da-4aa7-b60b-03fd6ae2dbfb)
 
+# Requirements Description
+The Marine Mammals Global Species Database stores information on all 187 species of marine mammals taken from the IUCN Red List. This database contains data about every species’ taxonomic ranking and their country (or countries) of occurrence. 
+•	Each species is given a Latin name consisting of the organism’s genus and species. A genus is made up of more than one species, a family is made up of more than one genus, an order is made up of more than one family, a class is made up of more than one order, a phylum is made up of more than one class, and a kingdom is made up of many phyla. 
+•	Marine mammals all share the same kingdom (Animalia), phylum (Chordata), and class (Mammalia). Several different orders make up the shared Mammalian class, and several different families make up an order. Families are made up of many different genera, and each genus can refer to one or more species. 
+•	Each unique species is given a two-word Latin name comprised of its genus and species, sometimes called a Friendly Name. Each species has a name, a unique taxonomic identification number, a friendly name, and an assigned Red List category. The same species may exist in more than one country. Every country has a unique occurrence lookup value and the associated taxon identification number.
+•	The database keeps a current record of all 187 known marine mammals. Information kept on each unique species includes their country of occurrence, habitats, threats, and population trends. 
+
+# ER Diagram Uncaptured Constraints
+The following is a list of constraints that are not captured by the ER diagram of Marine Mammal Biological Organization, Country Occurrence and IUCN Red List Category:
+•	A specie’s taxon identification number must be a positive integer.
+•	A specie’s category must be a two character combination specifically defined from the Red List species assessment. Options include EX (extinct), EW (extinct in the wild), CR (critically endangered), EN (endangered), VU (vulnerable), NT (near threatened), LC (least concern), or DD (data deficient). 
+
+Relational Schema: Syntax Summary and Table Details
+CountryOccurrances(taxID, countryoccurrencelookup_value)
+	foreign key (taxID) references Species(taxonID)
+Speecies(taxonID, sName, friendlyName, category)
+	foreign key (genName) references genus(gName) 
+Genus(gName)
+	foreign key (famName) references family(fName)
+Family(fName)
+	foreign key (ordName) references order(oName)
+Order(oName)
+	foreign key (clsName) references class(cName)
+Class(cName)
+	foreign key (phyName) references phylum(pName)
+Phylum(pName)
+	foreign key (kngName) references kingdom(kName)
+Kingdom(kname)
+
+Table Name	Attribute 	Description
+Species	taxonID	unique taxon ID
+	sName	species name
+	friendlyName	two-word Latin name assigned to each unique organism
+	category	category assigned using Red List Criteria
+Country	taxID	unique taxon ID of the 
+	countryoccurrencelookup_value	country of species occurrence 
+Genus	gName	unique genus name
+Family	fName	unique family name
+Order	oName	unique order name
+Class	cName	unique class name
+Phylum	pName	unique phylum name
+Kingdom	kName	unique kingdom name
 
 
