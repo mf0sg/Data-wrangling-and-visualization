@@ -1,7 +1,7 @@
 # IUCNRedList
+Cleaned, wrangled, queried, and visualized data from IUCN Redlist of Threatened Species public data.
 Designed a conceptual model for a relational database using ER diagrams, ER diagram constraints, requirements and 
 description of enterprise, and a relational schema.
-Cleaned, wrangled, queried, and visualized data from IUCN Redlist of Threatened Species public data.
 
 # About
 This project was completed to design and implement a database using public data from the IUCN Redlist of 
