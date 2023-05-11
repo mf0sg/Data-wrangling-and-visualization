@@ -34,34 +34,8 @@ The following is a list of constraints that are not captured by the ER diagram o
 •	A specie’s category must be a two character combination specifically defined from the Red List species assessment. Options include EX (extinct), EW (extinct in the wild), CR (critically endangered), EN (endangered), VU (vulnerable), NT (near threatened), LC (least concern), or DD (data deficient). 
 
 # Relational Schema: Syntax Summary and Table Details
-CountryOccurrances(taxID, countryoccurrencelookup_value)
-	foreign key (taxID) references Species(taxonID)
-Speecies(taxonID, sName, friendlyName, category)
-	foreign key (genName) references genus(gName) 
-Genus(gName)
-	foreign key (famName) references family(fName)
-Family(fName)
-	foreign key (ordName) references order(oName)
-Order(oName)
-	foreign key (clsName) references class(cName)
-Class(cName)
-	foreign key (phyName) references phylum(pName)
-Phylum(pName)
-	foreign key (kngName) references kingdom(kName)
-Kingdom(kname)
+![image](https://github.com/mf0sg/Data-wrangling-and-visualization/assets/88119103/36f37656-1d44-4c59-a60b-6f2bd3d65adf)
 
-Table Name	Attribute 	Description
-Species	taxonID	unique taxon ID
-	sName	species name
-	friendlyName	two-word Latin name assigned to each unique organism
-	category	category assigned using Red List Criteria
-Country	taxID	unique taxon ID of the 
-	countryoccurrencelookup_value	country of species occurrence 
-Genus	gName	unique genus name
-Family	fName	unique family name
-Order	oName	unique order name
-Class	cName	unique class name
-Phylum	pName	unique phylum name
-Kingdom	kName	unique kingdom name
+![image](https://github.com/mf0sg/Data-wrangling-and-visualization/assets/88119103/a02e4237-5a8b-4761-81ba-1a4714563bac)
 
 
